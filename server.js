@@ -1,9 +1,11 @@
-const { req, res} = require('express');
+
 const express = require('express');
-const guestbookGet = require('./guestbook.js')
 const app =express();
+const guestbookGet= require ('./routes/gusetbook')
 const PORT = 1337 ;
 
+app.use( express.static(__dirname + '/public') )
+app.use( express.json() )
 
 app.get('/', (req, res) => {
 
@@ -11,9 +13,9 @@ app.get('/', (req, res) => {
      });
    
      
-app.get('/guestbook', guestbookGet);
 
-
+app.get('/guestbook', guestbookGet)
+ 
 
 
 
